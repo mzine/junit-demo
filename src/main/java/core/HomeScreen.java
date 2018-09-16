@@ -1,5 +1,14 @@
 package core;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+import org.omg.PortableInterceptor.Interceptor;
+
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,10 +17,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class HomeScreen extends Application {
 
@@ -38,11 +50,39 @@ public class HomeScreen extends Application {
 		
 		addControlsToCanvas(canvas);
 		
+		setupCardsAnimation(canvas);
 		
-		Scene scene = new Scene(canvas, 320, 200);
+		Scene scene = new Scene(canvas, 420, 400);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Simple Calculator App");
 		primaryStage.show();
+	}
+
+	private void setupCardsAnimation(Pane canvas) {
+		Image img = null;
+		
+		try {
+			img = new Image(new FileInputStream("src/main/resources/core/download.jpg"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		ImageView imgView = new ImageView();
+		imgView.setImage(img);
+		imgView.relocate(20, 120);
+		
+		Timeline timeline = new Timeline();
+		timeline.setAutoReverse(true);
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		
+		KeyValue keyValue = new KeyValue(imgView.xProperty(), 200 , Interpolator.EASE_BOTH);
+		KeyFrame keyFrame = new KeyFrame(Duration.millis(500), keyValue);
+		
+		timeline.getKeyFrames().add(keyFrame);
+		timeline.play();
+		
+		canvas.getChildren().addAll(imgView);
 	}
 
 	private void addControlsToCanvas(Pane canvas) {
