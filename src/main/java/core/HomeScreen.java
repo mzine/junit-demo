@@ -1,10 +1,10 @@
 package core;
 
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import org.omg.PortableInterceptor.Interceptor;
-
+import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -74,7 +74,7 @@ public class HomeScreen extends Application {
 		
 		Timeline timeline = new Timeline();
 		timeline.setAutoReverse(true);
-		timeline.setCycleCount(Timeline.INDEFINITE);
+		timeline.setCycleCount(Animation.INDEFINITE);
 		
 		KeyValue keyValue = new KeyValue(imgView.xProperty(), 200 , Interpolator.EASE_BOTH);
 		KeyFrame keyFrame = new KeyFrame(Duration.millis(500), keyValue);

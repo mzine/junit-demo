@@ -1,5 +1,6 @@
 package core;
 
+
 public class ArithmeticSolver {
 	
 	public double add(double leftOperand, double rightOperand){
@@ -26,7 +27,7 @@ public class ArithmeticSolver {
 		
 		double answer = 0 ;
 		
-		switch(operator) {
+		switch(operator){
 		case "+":
 			answer = add(leftOperand,rightOperand);
 			break;
