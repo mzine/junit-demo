@@ -38,6 +38,13 @@ public class Card {
 		return "0";
 	}
 
+	public boolean equals(Card cd) {
+
+        if (this.suits == cd.suits && this.ranks == cd.ranks) 
+            return true;
+        return false;
+    }
+	
 	public String cardToString() {
         return this.ranks + " " + this.suits;
     }

@@ -1,11 +1,18 @@
 package assignement1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Hand {
 
 	public static ArrayList<Card> cardsList;
 	
+	public final static String TEN   = "10";
+    public final static String JACK  = "J";
+    public final static String QUEEN = "Q";
+    public final static String KING  = "K";
+    public final static String ACE   = "A";
 	
     public Hand(String path) {
         ReadFile file = new ReadFile(path);
@@ -27,6 +34,24 @@ public class Hand {
         
     }
     
+    public Hand(ArrayList<Card> cardsList) {
+    	boolean valid = (cardsList.size() == 5);
+    	if(valid)
+    		this.cardsList = cardsList;
+    }
+    
+    
+    public boolean isRoyalFlush() {
+        
+		for(int i= 0; i< cardsList.size(); i++) {
+			if(cardsList.get(i).equals(TEN) || cardsList.get(i).equals(JACK) || cardsList.get(i).equals(QUEEN)
+					||cardsList.get(i).equals(KING) || cardsList.get(i).equals(ACE))
+				return true;
+		}
+		
+		return false;
+        
+    }
     
     public static void main(String[] args) {
     	

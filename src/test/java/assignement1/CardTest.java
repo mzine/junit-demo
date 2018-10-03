@@ -52,4 +52,12 @@ public class CardTest extends TestCase {
         assertEquals("2 D", new Card("2", "D").cardToString());
         
 	}
+    public void testcardEquals() {
+        assertEquals(true, new Card("2", "D").equals(new Card("2", "D")));
+        
+	}
+    public void testcardNotEquals() {
+        assertEquals(false, new Card("2", "D").equals(new Card("0", "0")));
+        
+	}
 }
